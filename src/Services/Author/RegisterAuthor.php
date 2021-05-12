@@ -5,7 +5,7 @@ namespace App\Services\Author;
 use App\Database;
 use App\Models\AuthorModel;
 
-class RegisterFirstAuthor
+class RegisterAuthor
 {
     private AuthorModel $author;
 
@@ -21,7 +21,8 @@ class RegisterFirstAuthor
             $db = $db->connect();
 
             $sql =
-                "INSERT INTO autores (
+            "INSERT INTO autores (
+                    id_proyectos,
                     nombre,
                     ape_pat,
                     ape_mat,
@@ -40,6 +41,7 @@ class RegisterFirstAuthor
                     facebook,
                     twitter
                 ) VALUES (
+                    :id_proyectos,
                     :nombre,
                     :ape_pat,
                     :ape_mat,
@@ -60,7 +62,8 @@ class RegisterFirstAuthor
                 )";
 
             $stmt = $db->prepare($sql);
-            
+
+            $stmt->bindParam(':id_proyectos', $this->author->projectId);
             $stmt->bindParam(':nombre', $this->author->name);
             $stmt->bindParam(':ape_pat', $this->author->firstLastName);
             $stmt->bindParam(':ape_mat', $this->author->secondLastName);

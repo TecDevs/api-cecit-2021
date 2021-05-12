@@ -8,6 +8,7 @@ $app = AppFactory::create();
 
 
 require __DIR__ . '/Config.php';
+require __DIR__ . '/Constants.php';
 require __DIR__ . '/Database.php';
 require __DIR__ . '/Router.php';
 require __DIR__ . '/../Middlewares/JsonResponse.php';

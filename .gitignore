@@ -1,0 +1,5 @@
+/uploads/*.*
+/uploads/projects/*.*
+/uploads/assessors/*.*
+!/uploads/projects/.gitkeep
+!/uploads/assessors/.gitkeep
