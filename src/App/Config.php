@@ -1,3 +1,3 @@
 <?php
 
-$app->setBasePath('/applications/api-cotacyt-2021');
+$app->setBasePath('/APIS-CORAZAI-2.0');
