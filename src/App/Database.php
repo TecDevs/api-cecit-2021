@@ -10,7 +10,7 @@ final class Database
     // private $host   = 'plataforma.cotacyt.gob.mx';
     // private $user   = 'innovacion';
     // private $pass   = 'W4HndVUhHBcZ343Z';
-    // private $db     = 'premio_estatal_2020';
+    // private $db     = 'sistema_evaluacion';
 
     // ACM
     private $host   = 'mante.hosting.acm.org';
