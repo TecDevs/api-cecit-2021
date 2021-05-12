@@ -85,7 +85,7 @@ class RegisterFirstAuthor
                 return [
                     'error'  => true,
                     'status' => 500,
-                    'data' => array('message' => 'No se encontró la cuenta de usuario')
+                    'data' => array('message' => 'Ocurrio un error en el servidor: ' . $db->errorInfo()[2])
                 ];
             }
             return [
