@@ -16,7 +16,6 @@ class RegisterFirstAuthor
 
     public function __invoke(): array
     {
-        $response = array();
         try {
             $db = new Database();
             $db = $db->connect();
@@ -83,19 +82,23 @@ class RegisterFirstAuthor
             $stmt->execute();
 
             if ($stmt->rowCount() === 0) {
-                $response['error'] = false;
-                $response['status'] = 500;
-                $response['data']['message'] = 'Ocurrio un error en el servidor: ' . $db->errorInfo()[2];
+                return [
+                    'error'  => true,
+                    'status' => 500,
+                    'data' => array('message' => 'No se encontró la cuenta de usuario')
+                ];
             }
-
-            $response['error'] = false;
-            $response['status'] = 200;
-            $response['data']['message'] = 'Registro exitoso';
+            return [
+                'error'  => false,
+                'status' => 200,
+                'data' => array('message' => 'Registro exitoso')
+            ];
         } catch (\Exception $exception) {
-            $response['error'] = true;
-            $response['status'] = 500;
-            $response['data']['message'] = 'Ocurrio un error en el servidor: ' . $exception->getMessage();
+            return [
+                'error'  => true,
+                'status' => 500,
+                'data' => array('message' => 'Ocurrio un error en el servidor: ' . $exception->getMessage())
+            ];
         }
-        return $response;
     }
 }

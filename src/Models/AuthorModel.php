@@ -34,15 +34,15 @@ class AuthorModel
         $this->address = $authorParams['address'] ?? '';
         $this->suburb = $authorParams['suburb'] ?? '';
         $this->postalCode = $authorParams['postal_code'] ?? '';
-        $this->curp = $authorParams['curp'];
-        $this->rfc = $authorParams['rfc'];
-        $this->phone = $authorParams['phone_contact'];
+        $this->curp = $authorParams['curp'] ?? '';
+        $this->rfc = $authorParams['rfc'] ?? '';
+        $this->phone = $authorParams['phone_contact'] ?? '';
         $this->username = $authorParams['user_name'] ?? '';
-        $this->email = $authorParams['email'];
+        $this->email = $authorParams['email'] ?? '';
         $this->password = $authorParams['password'] ?? '';
-        $this->city = $authorParams['city'];
-        $this->locality = $authorParams['locality'];
-        $this->school = $authorParams['school'];
+        $this->city = $authorParams['city'] ?? '';
+        $this->locality = $authorParams['locality'] ?? '';
+        $this->school = $authorParams['school'] ?? '';
         $this->facebook = $authorParams['facebook'] ?? '';
         $this->twitter = $authorParams['twitter'] ?? '';
     }
