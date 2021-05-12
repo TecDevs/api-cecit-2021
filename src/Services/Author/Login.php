@@ -36,7 +36,7 @@ class Login
             if ($stmt->rowCount() === 0) {
                 return [
                     'error'  => true,
-                    'status' => 500,
+                    'status' => 404,
                     'data' => array('message' => 'No se encontró la cuenta de usuario')
                 ];
             }
