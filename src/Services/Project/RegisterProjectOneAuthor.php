@@ -69,7 +69,7 @@ class RegisterProjectOneAuthor
                 . $this->project->categoryId;
             $projectImageFilename = sprintf('%s.%0.8s', $projectImageBasename, $projectImageExtension);
             $this->project->image->moveTo($projectImageDirectory . DIRECTORY_SEPARATOR . $projectImageFilename);
-            $this->project->imageUrl = $projectImageFilename;
+            $this->project->imageUrl = $projectImageDirectory . DIRECTORY_SEPARATOR . $projectImageFilename;
 
             $assessorINEImageDirectory =
                 Constants::FILE_UPLOAD_BASE_DIR
@@ -81,7 +81,7 @@ class RegisterProjectOneAuthor
                 . $this->assessor->curp;
             $assessorINEImageFilename = sprintf('%s.%0.8s', $assessorINEImageBasename, $assessorINEImageExtension);
             $this->assessor->ineImage->moveTo($assessorINEImageDirectory . DIRECTORY_SEPARATOR . $assessorINEImageFilename);
-            $this->assessor->ineImageUrl = $assessorINEImageFilename;
+            $this->assessor->ineImageUrl = $assessorINEImageDirectory . DIRECTORY_SEPARATOR . $assessorINEImageFilename;
 
             $db = new Database();
             $db = $db->connect();

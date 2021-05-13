@@ -74,8 +74,7 @@ class RegisterProjectTwoAuthors
         try {
 
             $projectImageDirectory =
-                Constants::FILE_UPLOAD_BASE_DIR
-                . DIRECTORY_SEPARATOR
+                DIRECTORY_SEPARATOR
                 . 'projects';
             $projectImageExtension = pathinfo($this->project->image->getClientFilename(), PATHINFO_EXTENSION);
             $projectImageBasename =
@@ -86,20 +85,19 @@ class RegisterProjectTwoAuthors
                 . '-'
                 . $this->project->categoryId;
             $projectImageFilename = sprintf('%s.%0.8s', $projectImageBasename, $projectImageExtension);
-            $this->project->image->moveTo($projectImageDirectory . DIRECTORY_SEPARATOR . $projectImageFilename);
+            $this->project->image->moveTo(Constants::FILE_UPLOAD_BASE_DIR . $projectImageDirectory . DIRECTORY_SEPARATOR . $projectImageFilename);
             $this->project->imageUrl = $projectImageFilename;
 
             $assessorINEImageDirectory =
-                Constants::FILE_UPLOAD_BASE_DIR
-                . DIRECTORY_SEPARATOR
+                DIRECTORY_SEPARATOR
                 . 'assessors-ine';
             $assessorINEImageExtension = pathinfo($this->assessor->ineImage->getClientFilename(), PATHINFO_EXTENSION);
             $assessorINEImageBasename =
                 'assessor-'
                 . $this->assessor->curp;
             $assessorINEImageFilename = sprintf('%s.%0.8s', $assessorINEImageBasename, $assessorINEImageExtension);
-            $this->assessor->ineImage->moveTo($assessorINEImageDirectory . DIRECTORY_SEPARATOR . $assessorINEImageFilename);
-            $this->assessor->ineImageUrl = $assessorINEImageFilename;
+            $this->assessor->ineImage->moveTo(Constants::FILE_UPLOAD_BASE_DIR. $assessorINEImageDirectory . DIRECTORY_SEPARATOR . $assessorINEImageFilename);
+            $this->assessor->ineImageUrl = $assessorINEImageDirectory . DIRECTORY_SEPARATOR . $assessorINEImageFilename;
 
             $db = new Database();
             $db = $db->connect();

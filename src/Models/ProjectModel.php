@@ -13,7 +13,7 @@ class ProjectModel
     public string $name;
     public string $description;
     public string $url;
-    public \Psr\Http\Message\UploadedFileInterface $image;
+    public $image;
     public string $imageUrl;
 
     public function __construct(array $projectParams)
@@ -27,7 +27,7 @@ class ProjectModel
         $this->name = $projectParams['project_name'] ?? '';
         $this->description = $projectParams['project_description'] ?? '';
         $this->url = $projectParams['url_video'] ?? '';
-        $this->image = $projectParams['project_image'] ?? null;
+        $this->image = $projectParams['project_image'] ?? '';
         $this->imageUrl = $projectParams['project_image_url'] ?? '';
     }
 }

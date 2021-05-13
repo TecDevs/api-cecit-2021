@@ -7,6 +7,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 use App\Services\Project\RegisterProjectOneAuthor;
 use App\Services\Project\RegisterProjectTwoAuthors;
+use App\Services\Project\UploadRegisterForm;
 
 class ProjectController
 {
@@ -31,6 +32,16 @@ class ProjectController
 
         $registerProjectTwoAuthors = new RegisterProjectTwoAuthors($params);
         $response->getBody()->write(json_encode($registerProjectTwoAuthors()));
+        return $response;
+    }
+    public function uploadRegisterForm(Request $request, Response $response, array $args): Response
+    {
+        $params = (array)$request->getParsedBody();
+        $files = $request->getUploadedFiles();
+        $params['register_form'] = $files['register_form'];
+
+        $uploadRegisterForm = new UploadRegisterForm($params);
+        $response->getBody()->write(json_encode($uploadRegisterForm()));
         return $response;
     }
 }

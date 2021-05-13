@@ -21,7 +21,7 @@ class AssessorModel
     public string $facebook;
     public string $twitter;
     public string $description;
-    public \Psr\Http\Message\UploadedFileInterface $ineImage;
+    public $ineImage;
     public string $ineImageUrl;
 
     public function __construct(array $assessorParams)
@@ -43,7 +43,7 @@ class AssessorModel
         $this->facebook = $assessorParams['facebook'] ?? '';
         $this->twitter = $assessorParams['twitter'] ?? '';
         $this->description = $assessorParams['participation_description'] ?? '';
-        $this->ineImage = $assessorParams['image_ine'] ?? null;
+        $this->ineImage = $assessorParams['image_ine'] ?? '';
         $this->ineImageUrl = $assessorParams['image_ine_url'] ?? '';
     }
 }
