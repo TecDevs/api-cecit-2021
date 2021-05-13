@@ -1,6 +1,6 @@
 /uploads/*.*
 /uploads/projects/*.*
-/uploads/assessors/*.*
+/uploads/assessors-ine/*.*
 /uploads/register-form/*.*
 !/uploads/register-form/.gitkeep
 !/uploads/projects/.gitkeep
