@@ -1,5 +1,7 @@
 /uploads/*.*
 /uploads/projects/*.*
 /uploads/assessors/*.*
+/uploads/register-form/*.*
+!/uploads/register-form/.gitkeep
 !/uploads/projects/.gitkeep
 !/uploads/assessors/.gitkeep
