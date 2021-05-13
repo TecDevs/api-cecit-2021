@@ -7,16 +7,16 @@ use PDO;
 final class Database
 {
     // Cotacyt
-    // private $host   = 'plataforma.cotacyt.gob.mx';
-    // private $user   = 'innovacion';
-    // private $pass   = 'W4HndVUhHBcZ343Z';
-    // private $db     = 'sistema_evaluacion';
+    private $host   = 'plataforma.cotacyt.gob.mx';
+    private $user   = 'innovacion';
+    private $pass   = 'W4HndVUhHBcZ343Z';
+    private $db     = 'sistema_evaluacion';
 
     // ACM
-    private $host   = 'mante.hosting.acm.org';
-    private $user   = 'mantehostingacm_kt';
-    private $pass   = 'QWERTYKtdral_014';
-    private $db     = 'mantehostingacm_CotacytXXI';
+    // private $host   = 'mante.hosting.acm.org';
+    // private $user   = 'mantehostingacm_kt';
+    // private $pass   = 'QWERTYKtdral_014';
+    // private $db     = 'mantehostingacm_CotacytXXI';
 
     public function connect(): PDO
     {
