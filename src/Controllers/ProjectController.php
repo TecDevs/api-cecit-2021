@@ -41,6 +41,7 @@ class ProjectController
         $params['register_form'] = $files['register_form'];
 
         $uploadRegisterForm = new UploadRegisterForm($params);
+
         $response->getBody()->write(json_encode($uploadRegisterForm()));
         return $response;
     }
