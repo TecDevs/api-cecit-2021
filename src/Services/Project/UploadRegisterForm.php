@@ -4,19 +4,19 @@ namespace App\Services\Project;
 
 use App\Constants;
 use App\Database;
-use App\Models\ProjectModel;
+use App\Models\AuthorModel;
 
 
 class UploadRegisterForm
 {
-    private ProjectModel $project;
+    private AuthorModel $author;
     private \Psr\Http\Message\UploadedFileInterface $registerForm;
 
 
     public function __construct(array $params)
     {
-        $this->project = new ProjectModel(array(
-            'project_id' => $params['project_id']
+        $this->author = new authorModel(array(
+            'author_id' => $params['author_id']
         ));
         $this->registerForm = $params['register_form'];
     }
@@ -30,14 +30,22 @@ class UploadRegisterForm
                 . 'register-form';
             $registerFormExtension = pathinfo($this->registerForm->getClientFilename(), PATHINFO_EXTENSION);
             $registerFormBasename =
-                'project-'
-                . $this->project->projectId;
+                'author-'
+                . $this->author->authorId;
             $registerFormFilename = sprintf('%s.%0.8s', $registerFormBasename, $registerFormExtension);
             $this->registerForm->moveTo(Constants::FILE_UPLOAD_BASE_DIR . $registerFormDirectory . DIRECTORY_SEPARATOR . $registerFormFilename);
             $registerFormUrl = $registerFormDirectory . DIRECTORY_SEPARATOR . $registerFormFilename;
 
             $db = new Database();
             $db = $db->connect();
+
+            $sql = "SELECT id_proyectos FROM autores WHERE id_autores = :id_autores";
+
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam(':id_autores', $this->author->authorId, \PDO::PARAM_INT);
+            $stmt->execute();
+
+            $projectId = $stmt->fetchColumn();
 
             $sql =
                 "UPDATE proyectos SET 
@@ -48,7 +56,7 @@ class UploadRegisterForm
 
             $stmt = $db->prepare($sql);
             $stmt->bindParam(':doc_proyecto', $registerFormUrl, \PDO::PARAM_STR);
-            $stmt->bindParam(':id_proyectos', $this->project->projectId, \PDO::PARAM_INT);
+            $stmt->bindParam(':id_proyectos', $projectId, \PDO::PARAM_INT);
 
             $stmt->execute();
 
