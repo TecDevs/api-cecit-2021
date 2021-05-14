@@ -86,7 +86,7 @@ class RegisterProjectTwoAuthors
                 . $this->project->categoryId;
             $projectImageFilename = sprintf('%s.%0.8s', $projectImageBasename, $projectImageExtension);
             $this->project->image->moveTo(Constants::FILE_UPLOAD_BASE_DIR . $projectImageDirectory . DIRECTORY_SEPARATOR . $projectImageFilename);
-            $this->project->imageUrl = $projectImageFilename;
+            $this->project->imageUrl = $projectImageDirectory . DIRECTORY_SEPARATOR . $projectImageFilename;
 
             $assessorINEImageDirectory =
                 DIRECTORY_SEPARATOR
